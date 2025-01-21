@@ -2,6 +2,7 @@
 - name: Update system packages for Red Hat and Ubuntu
   hosts: all
   gather_facts: yes
+  become: true
   tasks:
     - name: Update all packages on RHEL/CentOS/Fedora
       dnf:
