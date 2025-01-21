@@ -14,3 +14,4 @@
         - hostname: 0.pool.ntp.org
           pool: yes
           iburst: yes
+      when: ansible_facts['os_family'] == "RedHat"

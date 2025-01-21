@@ -1,9 +1,18 @@
 ---
-- name: Red Hat Enterprise linux patch update
+- name: Update system packages for Red Hat and Ubuntu
   hosts: all
   gather_facts: yes
-  tasks:    
-    - name:  Update all packages
+  tasks:
+    - name: Update all packages on RHEL/CentOS/Fedora
       dnf:
         name: "*"
         state: latest
+      when: ansible_facts['os_family'] == "RedHat"
+      
+    - name: Update all packages on Ubuntu/Debian with apt
+      apt:
+        update_cache: yes
+        upgrade: dist
+        autoclean: yes
+        autoremove: yes
+      when: ansible_facts['os_family'] == "Debian" and ansible_facts['pkg_mgr'] == "apt"
