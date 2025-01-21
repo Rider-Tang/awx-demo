@@ -1,0 +1,9 @@
+---
+- name: Red Hat Enterprise linux patch update
+  hosts: all
+  gather_facts: yes
+  tasks:    
+    - name:  Update all packages
+      dnf:
+        name: "*"
+        state: latest
