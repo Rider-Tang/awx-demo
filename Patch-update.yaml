@@ -12,8 +12,9 @@
       
     - name: Update all packages on Ubuntu/Debian with apt
       apt:
+        name: "*"
         update_cache: yes
-        upgrade: dist
+        state: latest
         autoclean: yes
         autoremove: yes
       when: ansible_facts['os_family'] == "Debian" and ansible_facts['pkg_mgr'] == "apt"
