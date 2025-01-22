@@ -1,6 +1,7 @@
 ---
 - name: Managing time synchronization
   hosts: all
+  become: true
   tasks:
     - name: Configuring NTP with an internal server (preferred) and a public server pool as fallback
       ansible.builtin.include_role:
